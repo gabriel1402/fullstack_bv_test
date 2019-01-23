@@ -34,6 +34,13 @@ class UrlController < ApplicationController
     redirect_to url.url
   end
 
+  def top_100
+    render json: {
+      status: :success,
+      data: Url::top_100
+    }
+  end
+
   private 
 
   def permitted_params

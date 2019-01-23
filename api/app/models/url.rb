@@ -8,5 +8,10 @@ class Url < ApplicationRecord
       errors.add(:url, "invalid URL")
     end
   end
+  
+  def self.top_100
+    find_by_sql('SELECT id, url, title FROM urls ORDER BY visits DESC LIMIT 100')
+  end
+  
 end
     
