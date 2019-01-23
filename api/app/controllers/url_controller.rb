@@ -30,6 +30,7 @@ class UrlController < ApplicationController
   def redirect
     id = decode(params[:id])
     url = Url.find(id)
+    IncrementUrlVisitsJob.perform_later id
     redirect_to url.url
   end
 
