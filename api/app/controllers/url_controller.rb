@@ -13,6 +13,7 @@ class UrlController < ApplicationController
     end
     new_url = Url.create(permitted_params)
     if new_url.save
+      StoreUrlTitleJob.perform_later new_url.id
       return render json: {
         status: :success,
         data: 'localhost:3000/' + encode(new_url.id)
