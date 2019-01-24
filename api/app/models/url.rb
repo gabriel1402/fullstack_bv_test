@@ -21,7 +21,7 @@ class Url < ApplicationRecord
   end
 
   def short_url
-    'localhost:3000/' + encode(id)
+    ENV['APP_URL'] + encode(id)
   end
   
 end

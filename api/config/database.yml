@@ -24,9 +24,9 @@ default: &default
 development:
   <<: *default
   database: bv_test_development
-  username: postgres
-  password: sa123456
-  host: 127.0.0.1
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -61,9 +61,9 @@ development:
 test:
   <<: *default
   database: bv_test_test
-  username: postgres
-  password: sa123456
-  host: 127.0.0.1
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
   
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -88,5 +88,4 @@ test:
 production:
   <<: *default
   database: bv_test_production
-  username: bv_test
-  password: <%= ENV['BV_TEST_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
