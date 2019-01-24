@@ -11,8 +11,7 @@ module Base62_Helper
     return str
   end
 
-  def decode(str)
-    
+  def self.decode(str)
     id = 0
     str.chars.reverse.each_with_index do |char, index|
       position = KEYS.size ** index

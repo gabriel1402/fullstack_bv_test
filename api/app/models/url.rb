@@ -1,4 +1,6 @@
 class Url < ApplicationRecord
+  include Base62_Helper
+
   validates :url, presence: true
   validate :validate_url
 
@@ -10,7 +12,16 @@ class Url < ApplicationRecord
   end
   
   def self.top_100
-    find_by_sql('SELECT id, url, title FROM urls ORDER BY visits DESC LIMIT 100')
+    order(visits: :desc).all.as_json(methods: :short_url)
+  end
+
+  def self.decode_short_url(short_url)
+    id = Base62_Helper.decode(short_url)
+    find(id)
+  end
+
+  def short_url
+    'localhost:3000/' + encode(id)
   end
   
 end

@@ -1,5 +1,4 @@
 class UrlController < ApplicationController
-  include Base62_Helper
 
   def create
     url = params[:url]
@@ -7,7 +6,7 @@ class UrlController < ApplicationController
     if old_url
       render json: {
         status: :success,
-        data: 'localhost:3000/' + encode(old_url.id)
+        data: old_url.short_url
       }
       return
     end
@@ -16,7 +15,7 @@ class UrlController < ApplicationController
       StoreUrlTitleJob.perform_later new_url.id
       return render json: {
         status: :success,
-        data: 'localhost:3000/' + encode(new_url.id)
+        data: new_url.short_url
       }
     end
     
@@ -28,9 +27,8 @@ class UrlController < ApplicationController
   end
 
   def redirect
-    id = decode(params[:id])
-    url = Url.find(id)
-    IncrementUrlVisitsJob.perform_later id
+    url = Url.decode_short_url(params[:id])
+    IncrementUrlVisitsJob.perform_later url.id
     redirect_to url.url
   end
 
