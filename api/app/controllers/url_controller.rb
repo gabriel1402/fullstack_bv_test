@@ -28,8 +28,14 @@ class UrlController < ApplicationController
 
   def redirect
     url = Url.decode_short_url(params[:id])
-    IncrementUrlVisitsJob.perform_later url.id
-    redirect_to url.url
+    if url
+      IncrementUrlVisitsJob.perform_later url.id
+      return redirect_to url.url
+    end
+    render json: {
+      status: 404,
+      error: "Not Found"
+    }, status: :not_found
   end
 
   def top_100

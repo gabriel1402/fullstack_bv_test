@@ -17,7 +17,7 @@ class Url < ApplicationRecord
 
   def self.decode_short_url(short_url)
     id = Base62_Helper.decode(short_url)
-    find(id)
+    find(id) rescue false
   end
 
   def short_url
