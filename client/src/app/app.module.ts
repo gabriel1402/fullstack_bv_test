@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UrlShortenerComponent } from './url-shortener/url-shortener.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { TopComponent } from './top/top.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UrlShortenerComponent,
-    NavbarComponent
+    NavbarComponent,
+    TopComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col mb-5">
+      <h1>Top 100 most visited URLs</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let url of top_urls; let i = index">
+          {{i + 1}}. <a href="{{url.short_url}}" target="_blank" class="text-decoration-none">{{url.short_url}}</a> - {{url.title}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
