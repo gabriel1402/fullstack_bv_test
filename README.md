@@ -77,7 +77,7 @@ Recieves an URL string and returns a shorter URL.
     ```
     {
       "status":400,
-      "error":{
+      "errors":{
         "attribute":[
           "error message"
         ]
@@ -147,6 +147,6 @@ Redirects the shortened URL to the full URL.
     ```
     {
       "status": 404,
-      "error": "Not Found"
+      "errors": "Not Found"
     }
     ```

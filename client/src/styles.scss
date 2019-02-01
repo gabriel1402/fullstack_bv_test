@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+$primary: #4a3b8f;
+$secondary: #81b44c;
+
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import '~bootstrap/scss/bootstrap';
+
+.btn-outline-secondary:hover {
+  color: $white;
+}

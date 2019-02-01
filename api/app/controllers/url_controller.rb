@@ -21,7 +21,7 @@ class UrlController < ApplicationController
     
     render json: {
       status: 400,
-      error: new_url.errors.messages
+      errors: new_url.errors.messages
     }, status: :bad_request
     
   end
@@ -34,7 +34,7 @@ class UrlController < ApplicationController
     end
     render json: {
       status: 404,
-      error: "Not Found"
+      errors: "Not Found"
     }, status: :not_found
   end
 
