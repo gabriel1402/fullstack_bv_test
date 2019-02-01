@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UrlService } from '../services/url.service';
-import { enterRight } from '../animations/router.animations';
 
 @Component({
   selector: 'app-top',
   templateUrl: './top.component.html',
-  styleUrls: ['./top.component.scss'],
-  animations: [ enterRight() ]
+  styleUrls: ['./top.component.scss']
 })
 export class TopComponent implements OnInit {
 

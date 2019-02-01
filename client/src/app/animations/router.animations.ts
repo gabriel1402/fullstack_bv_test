@@ -1,32 +1,53 @@
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, state, style, animate, transition, query, animateChild, group } from '@angular/animations';
 
-export function enterRight() {
-  return trigger('routerTransition', [
-    state('void', style({})),
-    state('*', style({})),
-    transition(':enter', [
-        style({ transform: 'translateX(100%)' }),
-        animate('0.5s ease-in-out', style({ transform: 'translateX(0%)' }))
+export const slideInAnimation =
+  trigger('routeAnimations', [
+    transition('TopPage => UrlPage', [
+      style({ position: 'relative' }),
+      query(':enter, :leave', [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })
+      ]),
+      query(':enter', [
+        style({ left: '-100%'})
+      ]),
+      query(':leave', animateChild()),
+      group([
+        query(':leave', [
+          animate('300ms ease-out', style({ left: '100%'}))
+        ]),
+        query(':enter', [
+          animate('300ms ease-out', style({ left: '0%'}))
+        ])
+      ]),
+      query(':enter', animateChild()),
     ]),
-    transition(':leave', [
-        style({ transform: 'translateX(0%)' }),
-        animate('0.5s ease-in-out', style({ transform: 'translateX(-100%)' }))
-    ])
+    transition('UrlPage => TopPage', [
+      style({ position: 'relative' }),
+      query(':enter, :leave', [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })
+      ]),
+      query(':enter', [
+        style({ left: '100%'})
+      ]),
+      query(':leave', animateChild()),
+      group([
+        query(':leave', [
+          animate('300ms ease-out', style({ left: '-100%'}))
+        ]),
+        query(':enter', [
+          animate('300ms ease-out', style({ left: '0%'}))
+        ])
+      ]),
+      query(':enter', animateChild()),
+    ]),
   ]);
-
-}
-
-export function enterLeft() {
-  return trigger('routerTransition', [
-    state('void', style({})),
-    state('*', style({})),
-    transition(':enter', [
-        style({ transform: 'translateX(-100%)' }),
-        animate('0.5s ease-in-out', style({ transform: 'translateX(0%)' }))
-    ]),
-    transition(':leave', [
-        style({ transform: 'translateX(0%)' }),
-        animate('0.5s ease-in-out', style({ transform: 'translateX(-100%)' }))
-    ])
-  ])
-}

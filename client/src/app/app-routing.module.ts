@@ -4,8 +4,8 @@ import { UrlShortenerComponent } from './url-shortener/url-shortener.component';
 import { TopComponent } from './top/top.component';
 
 const routes: Routes = [
-  { path: '', component: UrlShortenerComponent },
-  { path: 'top', component: TopComponent }
+  { path: '', component: UrlShortenerComponent, data: {animation: "UrlPage"} },
+  { path: 'top', component: TopComponent, data: {animation: "TopPage"} }
 ];
 
 @NgModule({
