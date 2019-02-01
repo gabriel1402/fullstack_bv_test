@@ -1,7 +1,7 @@
 # BeenVerified - Full Stack Technical Challenge
 
 ## Description
-URL Shortener web application (currently API only). Shorten your URLs and see the top 100 most visited sites. Developer with Rails.
+URL Shortener web application. Shorten your URLs and see the top 100 most visited sites. Developed with Angular + Rails.
 
 ## Requirements
 - Ruby (2.5.3)
@@ -9,6 +9,10 @@ URL Shortener web application (currently API only). Shorten your URLs and see th
 - PostgreSQL (11.1)
 - Redis (5.0.3)
 - Sidekiq
+
+- NodeJS (8.15.0)
+- NPM (6.4.1)
+- Angular (7.2.0)
 
 ## Installation
 Clone the project in your workspace with ```git clone https://github.com/gabriel1402/fullstack_bv_test.git```
@@ -31,6 +35,14 @@ bundle exec sidekiq &
 ```
 
 Then, you can just run `rails s` to set up the server, and your application will be running at http://localhost:3000.
+
+----
+
+For the web client, enter the client folder in the `fullstack_bv_test` directory and run ```npm install```.
+
+Make sure to configure the environment variables. For this, open the file `./src/environments/environment.ts` to edit the development variables. There, set the `api_url` variable to the URL of the API we got in the steps above.
+
+With everything ready, start the client with ```ng serve```, and it should start running at http://localhost:4200/.
 
 ## URL Shortening Algorithm
 
