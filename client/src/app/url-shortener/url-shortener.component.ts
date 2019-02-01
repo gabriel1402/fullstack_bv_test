@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { UrlService } from '../services/url.service';
+import { enterLeft } from '../animations/router.animations';
 
 @Component({
   selector: 'app-url-shortener',
   templateUrl: './url-shortener.component.html',
-  styleUrls: ['./url-shortener.component.scss']
+  styleUrls: ['./url-shortener.component.scss'],
+  animations: [ enterLeft() ]
 })
 export class UrlShortenerComponent implements OnInit {
   url:string = '';
